@@ -17,10 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class CategorisationEngineService {
@@ -44,10 +41,14 @@ public class CategorisationEngineService {
 
     IFileFactory fileFactory = new CSVFileFactory();
 
-    List<Transaction> processFiles(String filePath, String txnType){
-        // Create a file reader
-        IFileReader fileReader = fileFactory.createFileReader();
+    // Create a file reader
+    IFileReader fileReader = fileFactory.createFileReader();
 
+
+    // Create a file writer
+    IFileWriter fileWriter = fileFactory.createFileWriter();
+
+    List<Transaction> processFiles(String filePath, String txnType){
         List<Transaction> transactions = fileReader.readTransactions(filePath,txnType);
         List<Transaction> validTxns = validationsOnTxns(transactions);
         logger.info("Writing data to DB");
@@ -80,6 +81,13 @@ public class CategorisationEngineService {
         List<Transaction> validTransactions = new ArrayList<>();
 
         for (Transaction transaction : transactions) {
+
+            //Checking for mandatory fields to be present in txn
+            if (transaction.getGstIn() == null || transaction.getDate() == null || transaction.getBillNo() == null) {
+                logger.warn("Invalid record. Gstin, Date, or BillNo is null. Skipping record.");
+                continue;
+            }
+
             String transactionKey = transaction.getGstIn() + "_" + transaction.getDate() + "_" + transaction.getBillNo() + "_" + transaction.getTxnType();
 
             // Check if the transaction is already existing, skip it
@@ -88,16 +96,19 @@ public class CategorisationEngineService {
                 continue;
             }
 
+            // Negative value checks on numeric fields , skipping it
+            if (transaction.getGstRate() < 0 || transaction.getTaxableValue() < 0 || transaction.getIgst() < 0 || transaction.getCgst() < 0 || transaction.getSgst() < 0 || transaction.getTotal() < 0) {
+                continue;
+            }
+
             existingTransactionKeys.add(transactionKey);
             validTransactions.add(transaction);
         }
+
         return validTransactions;
     }
 
     public void processReconciliationResults(String buyerFilePath, String supplierFilePath, String reconciliationFilePath){
-
-        // Create a file writer
-        IFileWriter fileWriter = fileFactory.createFileWriter();
 
         logger.info("Reading buyer transaction file ");
         List<Transaction> buyerTransactions = processFiles(buyerFilePath, String.valueOf(TxnType.BUYER));

@@ -50,6 +50,8 @@ public class Transaction {
     @JsonProperty(value = "total")
     private Double total;
 
+    public Transaction(){
+    }
 
     public Transaction(String gstIn,String date,String billNo,Double gstRate,Double taxableValue,Double igst,Double cgst,Double sgst,Double total,String txnType) {
         this.gstIn = gstIn;

@@ -58,10 +58,19 @@ class DateMatchingTest {
 
     @Test
     void similarityScore_calculatesCorrectScore() throws ParseException {
-        String value1 = "2023-11-18";
-        String value2 = "2023-11-23";
+        String value1 = "18-11-2023";
+        String value2 = "23-11-2023";
 
         double score = dateMatching.similarityScore(value1, value2);
         assertEquals(5, score);
+    }
+
+    @Test
+    void similarityScoreDiffFormat_calculatesCorrectScore() throws ParseException {
+        String value1 = "11/20/23";
+        String value2 = "11/18/23";
+
+        double score = dateMatching.similarityScore(value1, value2);
+        assertEquals(2, score);
     }
 }

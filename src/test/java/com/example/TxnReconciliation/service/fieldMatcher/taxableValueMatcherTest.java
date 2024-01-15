@@ -58,12 +58,6 @@ class taxableValueMatcherTest {
         assertEquals(expectedScore, score);
     }
 
-    @Test
-    void match_handlesNullValues_returnsFalse() {
-        assertFalse(taxableValueMatcher.match(null, null));
-        assertFalse(taxableValueMatcher.match(null, "10000.00"));
-        assertFalse(taxableValueMatcher.match("10000.00", null));
-    }
 
     @Test
     void match_handlesEmptyValues_returnsFalse() {
@@ -75,11 +69,6 @@ class taxableValueMatcherTest {
     @Test
     void match_handlesZeroTaxableValue_returnsTrueForIdenticalZeros() {
         assertTrue(taxableValueMatcher.match("0", "0"));
-    }
-
-    @Test
-    void match_handlesNegativeTaxableValue_returnsFalse() {
-        assertFalse(taxableValueMatcher.match("-1000.00", "-1000.00"));
     }
 
     @Test

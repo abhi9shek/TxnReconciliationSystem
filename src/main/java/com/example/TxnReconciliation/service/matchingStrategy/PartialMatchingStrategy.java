@@ -5,6 +5,8 @@ import com.example.TxnReconciliation.constants.TxnFields;
 import com.example.TxnReconciliation.service.PropertiesReader;
 import com.example.TxnReconciliation.service.fieldMatcher.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
@@ -114,6 +116,8 @@ public class PartialMatchingStrategy implements IMatchingStrategy {
             // Handle the case where totalWeight is zero to avoid division by zero
             weightedAverage = 0.0;
         }
+
+        weightedAverage = BigDecimal.valueOf(weightedAverage).setScale(2, RoundingMode.HALF_UP).doubleValue();
 
         return weightedAverage;
     }

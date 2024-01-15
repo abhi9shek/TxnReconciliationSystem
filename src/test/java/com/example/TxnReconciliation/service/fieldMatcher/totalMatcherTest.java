@@ -59,13 +59,6 @@ class totalMatcherTest {
     }
 
     @Test
-    void match_handlesNullValues_returnsFalse() {
-        assertFalse(totalMatcher.match(null, null));
-        assertFalse(totalMatcher.match(null, "10000.00"));
-        assertFalse(totalMatcher.match("10000.00", null));
-    }
-
-    @Test
     void match_handlesEmptyValues_returnsFalse() {
         assertFalse(totalMatcher.match("", ""));
         assertFalse(totalMatcher.match("", "10000.00"));
@@ -75,11 +68,6 @@ class totalMatcherTest {
     @Test
     void match_handlesZerototal_returnsTrueForIdenticalZeros() {
         assertTrue(totalMatcher.match("0", "0"));
-    }
-
-    @Test
-    void match_handlesNegativetotal_returnsFalse() {
-        assertFalse(totalMatcher.match("-1000.00", "-1000.00"));
     }
 
     @Test

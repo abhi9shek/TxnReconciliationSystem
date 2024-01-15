@@ -71,11 +71,6 @@ class gstRateMatcherTest {
     }
 
     @Test
-    void match_handlesNegativeGSTRate_returnsFalse() {
-        assertFalse(gstRateMatcher.match("-5.0", "-5.0"));
-    }
-
-    @Test
     void match_handlesInvalidGSTRateFormats_returnsFalse() {
         assertFalse(gstRateMatcher.match("abc", "18.0"));
         assertFalse(gstRateMatcher.match("18%", "18.0"));

@@ -11,8 +11,8 @@ public class DateConvertor {
             return null;
         }
 
-        // Define multiple format patterns to handle different date formats
-        String[] patterns = {"MM/dd/yy", "dd-MM-yyyy", "yyyy-MM-dd"};
+//        Define multiple format patterns to handle different date formats
+        String[] patterns = {"MM/dd/yy", "dd-MM-yyyy"};
 
         for (String pattern : patterns) {
             try {
@@ -23,7 +23,6 @@ public class DateConvertor {
                 // Try the next format if parsing fails
             }
         }
-
-        return null;
+    return null;
     }
 }
