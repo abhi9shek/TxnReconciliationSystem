@@ -67,7 +67,7 @@ class CategorisationEngineServiceTest {
                 new TxnReconciliation(buyerTransactions.get(1), supplierTransactions.get(1),  MatchCategory.PARTIAL)
         ));
 
-        categorisationEngineService.processReconciliationResults("/home/abhishek/TxnFiles/Buyer.csv", "/home/abhishek/TxnFiles/Supplier.csv", "/home/abhishek/TxnFiles/Res.csv");
+        categorisationEngineService.processReconciliationResults("/home/abhishek/Craft-Demo/TxnFiles/Buyer.csv", "/home/abhishek/Craft-Demo/TxnFiles/Supplier.csv", "/home/abhishek/Craft-Demo/TxnFiles/Res.csv");
 
         verify(txnDAO, times(2)).saveAll(anyList());
         verify(txnReconciliationDAO).saveAll(anyList());

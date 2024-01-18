@@ -28,7 +28,7 @@ class CSVFileReaderTest {
     void readTransactions_validCSVFile_returnsTransactions() {
 
         // Call the method to test
-        List<Transaction> transactions = csvFileReader.readTransactions("/home/abhishek/TxnFiles/TestCasesFiles/testBuyer.csv", String.valueOf(TxnType.BUYER));
+        List<Transaction> transactions = csvFileReader.readTransactions("/home/abhishek/Craft-Demo/TxnFiles/TestCasesFiles/testBuyer.csv", String.valueOf(TxnType.BUYER));
 
         // Verify expected results
         assertEquals(2, transactions.size());
@@ -48,7 +48,7 @@ class CSVFileReaderTest {
     @Test
     void readTransactions_duplicateTransactions_skipsDuplicates() throws IOException {
 
-        List<Transaction> transactions = csvFileReader.readTransactions("/home/abhishek/TxnFiles/TestCasesFiles/testDuplicates.csv", String.valueOf(TxnType.BUYER));
+        List<Transaction> transactions = csvFileReader.readTransactions("/home/abhishek/Craft-Demo/TxnFiles/TestCasesFiles/testDuplicates.csv", String.valueOf(TxnType.BUYER));
 
         assertEquals(2, transactions.size()); // Only the unique transactions are returned
     }
