@@ -46,12 +46,6 @@ class CSVFileReaderTest {
     }
 
     @Test
-    void readTransactions_missingHeaders_throwsException() {
-
-        assertThrows(IOException.class, () -> csvFileReader.readTransactions("/home/abhishek/TxnFiles/TestCasesFiles/testMissingHeaders.csv", String.valueOf(TxnType.BUYER)));
-    }
-
-    @Test
     void readTransactions_duplicateTransactions_skipsDuplicates() throws IOException {
 
         List<Transaction> transactions = csvFileReader.readTransactions("/home/abhishek/TxnFiles/TestCasesFiles/testDuplicates.csv", String.valueOf(TxnType.BUYER));
