@@ -35,6 +35,6 @@ public class TransactionMatcherService {
     }
 
     public double calculateMatchScore(Transaction buyerTransaction , Transaction supplierTransaction){
-        return partialMatch.calculateSimilarityScore(buyerTransaction, supplierTransaction);
+        return partialMatch.getSimilarityScore(buyerTransaction, supplierTransaction);
     }
 }

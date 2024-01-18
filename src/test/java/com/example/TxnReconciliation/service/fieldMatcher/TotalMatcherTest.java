@@ -14,13 +14,13 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class totalMatcherTest {
+class TotalMatcherTest {
 
     @Mock
     private IFieldTypeMatching fieldTypeMatching;
 
     @InjectMocks
-    private totalMatcher totalMatcher;
+    private TotalMatcher totalMatcher;
 
     @Test
     void match_identicaltotals_returnsTrue() {
@@ -52,9 +52,9 @@ class totalMatcherTest {
         String value1 = "10000.00";
         String value2 = "11000.00";
         double expectedScore = 0.9090909090909091;
-        when(fieldTypeMatching.similarityScore(value1, value2)).thenReturn(expectedScore);
+        when(fieldTypeMatching.getSimilarityScore(value1, value2)).thenReturn(expectedScore);
 
-        double score = totalMatcher.similarityScore(value1, value2);
+        double score = totalMatcher.getSimilarityScore(value1, value2);
         assertEquals(expectedScore, score);
     }
 

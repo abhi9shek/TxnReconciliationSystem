@@ -44,7 +44,7 @@ public class DateMatching implements IFieldTypeMatching {
     }
 
     @Override
-    public double similarityScore(String value1, String value2) {
+    public double getSimilarityScore(String value1, String value2) {
         Date dt1 ;
         try {
             dt1 = DateConvertor.stringToSqlDate(value1);

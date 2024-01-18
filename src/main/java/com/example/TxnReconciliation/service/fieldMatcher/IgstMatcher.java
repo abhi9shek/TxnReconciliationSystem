@@ -3,11 +3,11 @@ package com.example.TxnReconciliation.service.fieldMatcher;
 import com.example.TxnReconciliation.service.fieldTypeMatcher.IFieldTypeMatching;
 import com.example.TxnReconciliation.service.fieldTypeMatcher.NumberMatching;
 
-public class igstMatcher implements IFieldMatcher {
+public class IgstMatcher implements IFieldMatcher {
 
     private final IFieldTypeMatching fieldTypeMatching;
 
-    public igstMatcher(){
+    public IgstMatcher(){
         this.fieldTypeMatching = new NumberMatching();
     }
     @Override
@@ -16,8 +16,8 @@ public class igstMatcher implements IFieldMatcher {
     }
 
     @Override
-    public double similarityScore(String value1, String value2) {
-        return fieldTypeMatching.similarityScore(value1, value2);
+    public double getSimilarityScore(String value1, String value2) {
+        return fieldTypeMatching.getSimilarityScore(value1, value2);
     }
 
 }

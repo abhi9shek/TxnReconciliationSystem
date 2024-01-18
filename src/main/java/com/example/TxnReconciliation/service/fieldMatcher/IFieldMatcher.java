@@ -4,5 +4,5 @@ public interface IFieldMatcher {
 
     boolean match(String val1, String val2);
 
-    double similarityScore(String value1, String value2);
+    double getSimilarityScore(String value1, String value2);
 }

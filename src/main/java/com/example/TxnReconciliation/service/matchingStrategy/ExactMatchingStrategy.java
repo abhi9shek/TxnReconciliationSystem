@@ -26,15 +26,15 @@ public class ExactMatchingStrategy implements IMatchingStrategy {
 
     String[] fields = TXN_FIELDS.split(",");
     public ExactMatchingStrategy() {
-        fieldsMatcher.put(TxnFields.GSTIN, new gstInMatcher());
-        fieldsMatcher.put(TxnFields.DATE, new dateMatcher());
-        fieldsMatcher.put(TxnFields.BILLNO, new billNoMatcher());
-        fieldsMatcher.put(TxnFields.TAXABLEVALUE, new taxableValueMatcher());
-        fieldsMatcher.put(TxnFields.GSTRATE, new gstRateMatcher());
-        fieldsMatcher.put(TxnFields.IGST, new igstMatcher());
-        fieldsMatcher.put(TxnFields.CGST, new cgstMatcher());
-        fieldsMatcher.put(TxnFields.SGST, new sgstMatcher());
-        fieldsMatcher.put(TxnFields.TOTAL, new totalMatcher());
+        fieldsMatcher.put(TxnFields.GSTIN, new GstInMatcher());
+        fieldsMatcher.put(TxnFields.DATE, new DateMatcher());
+        fieldsMatcher.put(TxnFields.BILLNO, new BillNoMatcher());
+        fieldsMatcher.put(TxnFields.TAXABLEVALUE, new TaxableValueMatcher());
+        fieldsMatcher.put(TxnFields.GSTRATE, new GstRateMatcher());
+        fieldsMatcher.put(TxnFields.IGST, new IgstMatcher());
+        fieldsMatcher.put(TxnFields.CGST, new CgstMatcher());
+        fieldsMatcher.put(TxnFields.SGST, new SgstMatcher());
+        fieldsMatcher.put(TxnFields.TOTAL, new TotalMatcher());
 
         fieldExtractors.put(TxnFields.GSTIN, Transaction::getGstIn);
         fieldExtractors.put(TxnFields.DATE, Transaction::getDate);
@@ -67,7 +67,7 @@ public class ExactMatchingStrategy implements IMatchingStrategy {
     }
 
     @Override
-    public double calculateSimilarityScore(Transaction txn1, Transaction txn2) {
+    public double getSimilarityScore(Transaction txn1, Transaction txn2) {
         return 1;
     }
 

@@ -1,7 +1,6 @@
 package com.example.TxnReconciliation.service.fieldTypeMatcher;
 
 import com.example.TxnReconciliation.service.PropertiesReader;
-import com.example.TxnReconciliation.utils.DateConvertor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
-import java.sql.Date;
 import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -61,7 +59,7 @@ class DateMatchingTest {
         String value1 = "18-11-2023";
         String value2 = "23-11-2023";
 
-        double score = dateMatching.similarityScore(value1, value2);
+        double score = dateMatching.getSimilarityScore(value1, value2);
         assertEquals(5, score);
     }
 
@@ -70,7 +68,7 @@ class DateMatchingTest {
         String value1 = "11/20/23";
         String value2 = "11/18/23";
 
-        double score = dateMatching.similarityScore(value1, value2);
+        double score = dateMatching.getSimilarityScore(value1, value2);
         assertEquals(2, score);
     }
 }

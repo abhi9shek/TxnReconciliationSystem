@@ -25,7 +25,7 @@ public class StringMatching implements IFieldTypeMatching {
     }
 
     @Override
-    public double similarityScore(String value1, String value2) {
+    public double getSimilarityScore(String value1, String value2) {
         int distanceBetweenStrings = stringMatching.getDistanceBetweenStrings(value1, value2);
         return 1 - ((double) distanceBetweenStrings)/(double) Math.max(value1.length(), value2.length());
     }

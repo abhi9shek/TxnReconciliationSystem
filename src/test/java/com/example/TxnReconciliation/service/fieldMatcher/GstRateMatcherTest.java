@@ -14,13 +14,13 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class gstRateMatcherTest {
+class GstRateMatcherTest {
 
     @Mock
     private IFieldTypeMatching fieldTypeMatching;
 
     @InjectMocks
-    private gstRateMatcher gstRateMatcher;
+    private GstRateMatcher gstRateMatcher;
 
     @Test
     void match_identicalGSTRates_returnsTrue() {
@@ -52,9 +52,9 @@ class gstRateMatcherTest {
         String value1 = "18.0";
         String value2 = "20.0"; // Different but close GST rates
         double expectedScore = 0.9;  // Assuming a hypothetical similarity calculation
-        when(fieldTypeMatching.similarityScore(value1, value2)).thenReturn(expectedScore);
+        when(fieldTypeMatching.getSimilarityScore(value1, value2)).thenReturn(expectedScore);
 
-        double score = gstRateMatcher.similarityScore(value1, value2);
+        double score = gstRateMatcher.getSimilarityScore(value1, value2);
         assertEquals(expectedScore, score);
     }
 

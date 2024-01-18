@@ -100,7 +100,7 @@ class ExactMatchingStrategyTest {
         Transaction buyerTransaction = new Transaction("GSTIN1", "2022-01-01", "123", 10.0, 100.0, 5.0, 3.0, 2.0, 10.0, String.valueOf(TxnType.BUYER));
         Transaction supplierTransaction = new Transaction("GSTIN1", "2022-01-01", "123", 10.0, 100.0, 5.0, 3.0, 2.0, 10.0, String.valueOf(TxnType.SUPPLIER));
 
-        assertEquals(1, exactMatchingStrategy.calculateSimilarityScore(buyerTransaction,supplierTransaction));
+        assertEquals(1, exactMatchingStrategy.getSimilarityScore(buyerTransaction,supplierTransaction));
     }
 
 }

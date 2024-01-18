@@ -30,7 +30,7 @@ public class NumberMatching implements IFieldTypeMatching {
     }
 
     @Override
-    public double similarityScore(String value1, String value2) {
+    public double getSimilarityScore(String value1, String value2) {
         double d1 = Double.parseDouble(value1);
         double d2 = Double.parseDouble(value2);
         return 1 - Math.abs(d1 - d2) / Math.max(Math.abs(d1), Math.abs(d2));

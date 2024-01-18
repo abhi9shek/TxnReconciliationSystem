@@ -14,13 +14,13 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class cgstMatcherTest {
+class CgstMatcherTest {
 
     @Mock
     private IFieldTypeMatching fieldTypeMatching;
 
     @InjectMocks
-    private cgstMatcher cgstMatcher;
+    private CgstMatcher cgstMatcher;
 
     @Test
     void match_identicalCGSTValues_returnsTrue() {
@@ -52,9 +52,9 @@ class cgstMatcherTest {
         String value1 = "9.5";
         String value2 = "10.0";
         double expectedScore = 0.95;
-        when(fieldTypeMatching.similarityScore(value1, value2)).thenReturn(expectedScore);
+        when(fieldTypeMatching.getSimilarityScore(value1, value2)).thenReturn(expectedScore);
 
-        double score = cgstMatcher.similarityScore(value1, value2);
+        double score = cgstMatcher.getSimilarityScore(value1, value2);
         assertEquals(expectedScore, score);
     }
 }

@@ -32,15 +32,15 @@ public class PartialMatchingStrategy implements IMatchingStrategy {
     String[] weightPairs = TXN_FIELD_WEIGHTS.split(",");
 
     public PartialMatchingStrategy() {
-        fieldsMatcher.put(TxnFields.GSTIN, new gstInMatcher());
-        fieldsMatcher.put(TxnFields.DATE, new dateMatcher());
-        fieldsMatcher.put(TxnFields.BILLNO, new billNoMatcher());
-        fieldsMatcher.put(TxnFields.TAXABLEVALUE, new taxableValueMatcher());
-        fieldsMatcher.put(TxnFields.GSTRATE, new gstRateMatcher());
-        fieldsMatcher.put(TxnFields.IGST, new igstMatcher());
-        fieldsMatcher.put(TxnFields.CGST, new cgstMatcher());
-        fieldsMatcher.put(TxnFields.SGST, new sgstMatcher());
-        fieldsMatcher.put(TxnFields.TOTAL, new totalMatcher());
+        fieldsMatcher.put(TxnFields.GSTIN, new GstInMatcher());
+        fieldsMatcher.put(TxnFields.DATE, new DateMatcher());
+        fieldsMatcher.put(TxnFields.BILLNO, new BillNoMatcher());
+        fieldsMatcher.put(TxnFields.TAXABLEVALUE, new TaxableValueMatcher());
+        fieldsMatcher.put(TxnFields.GSTRATE, new GstRateMatcher());
+        fieldsMatcher.put(TxnFields.IGST, new IgstMatcher());
+        fieldsMatcher.put(TxnFields.CGST, new CgstMatcher());
+        fieldsMatcher.put(TxnFields.SGST, new SgstMatcher());
+        fieldsMatcher.put(TxnFields.TOTAL, new TotalMatcher());
 
         fieldExtractors.put(TxnFields.GSTIN, Transaction::getGstIn);
         fieldExtractors.put(TxnFields.DATE, Transaction::getDate);
@@ -71,7 +71,7 @@ public class PartialMatchingStrategy implements IMatchingStrategy {
     }
 
     @Override
-    public double calculateSimilarityScore(Transaction txn1, Transaction txn2) {
+    public double getSimilarityScore(Transaction txn1, Transaction txn2) {
         double weightedAverage = 0.0;
         double sumOfWeights = 0.0;
 
@@ -102,7 +102,7 @@ public class PartialMatchingStrategy implements IMatchingStrategy {
             Object fieldValue2 = fieldExtractors.get(field).apply(txn2);
 
             // Calculate similarity score for the current field
-            double similarityScore = fieldMatcher.similarityScore(String.valueOf(fieldValue1), String.valueOf(fieldValue2));
+            double similarityScore = fieldMatcher.getSimilarityScore(String.valueOf(fieldValue1), String.valueOf(fieldValue2));
 
             // Update the weighted average
             weightedAverage += weight * similarityScore;

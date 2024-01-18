@@ -3,11 +3,11 @@ package com.example.TxnReconciliation.service.fieldMatcher;
 import com.example.TxnReconciliation.service.fieldTypeMatcher.IFieldTypeMatching;
 import com.example.TxnReconciliation.service.fieldTypeMatcher.DateMatching;
 
-public class dateMatcher implements IFieldMatcher {
+public class DateMatcher implements IFieldMatcher {
 
     private final IFieldTypeMatching fieldTypeMatching;
 
-    public dateMatcher(){
+    public DateMatcher(){
         this.fieldTypeMatching = new DateMatching();
     }
     @Override
@@ -16,8 +16,8 @@ public class dateMatcher implements IFieldMatcher {
     }
 
     @Override
-    public double similarityScore(String value1, String value2) {
-        return fieldTypeMatching.similarityScore(value1, value2);
+    public double getSimilarityScore(String value1, String value2) {
+        return fieldTypeMatching.getSimilarityScore(value1, value2);
     }
 
 }

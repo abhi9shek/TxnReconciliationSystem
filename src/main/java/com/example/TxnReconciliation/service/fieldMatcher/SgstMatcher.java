@@ -3,19 +3,21 @@ package com.example.TxnReconciliation.service.fieldMatcher;
 import com.example.TxnReconciliation.service.fieldTypeMatcher.IFieldTypeMatching;
 import com.example.TxnReconciliation.service.fieldTypeMatcher.NumberMatching;
 
-public class cgstMatcher implements IFieldMatcher {
+public class SgstMatcher implements IFieldMatcher {
+
     private final IFieldTypeMatching fieldTypeMatching;
 
-    public cgstMatcher(){
+    public SgstMatcher(){
         this.fieldTypeMatching = new NumberMatching();
     }
     @Override
-    public boolean match(String buyerCgst, String supplierCgst) {
-        return fieldTypeMatching.match(buyerCgst,supplierCgst);
+    public boolean match(String buyerSgst, String supplierSgst) {
+        return fieldTypeMatching.match(buyerSgst,supplierSgst);
     }
 
     @Override
-    public double similarityScore(String value1, String value2) {
-        return fieldTypeMatching.similarityScore(value1, value2);
+    public double getSimilarityScore(String value1, String value2) {
+        return fieldTypeMatching.getSimilarityScore(value1, value2);
     }
+
 }

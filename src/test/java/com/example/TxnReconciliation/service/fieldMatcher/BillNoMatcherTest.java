@@ -14,13 +14,13 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class billNoMatcherTest {
+class BillNoMatcherTest {
 
     @Mock
     private IFieldTypeMatching fieldTypeMatching;
 
     @InjectMocks
-    private billNoMatcher billNoMatcher;
+    private BillNoMatcher billNoMatcher;
 
     @Test
     void match_identicalBillNos_returnsTrue() {
@@ -45,9 +45,9 @@ class billNoMatcherTest {
         String value1 = "ABC123";
         String value2 = "ABC456";
         double expectedScore = 0.5;
-        when(fieldTypeMatching.similarityScore(value1, value2)).thenReturn(expectedScore);
+        when(fieldTypeMatching.getSimilarityScore(value1, value2)).thenReturn(expectedScore);
 
-        double score = billNoMatcher.similarityScore(value1, value2);
+        double score = billNoMatcher.getSimilarityScore(value1, value2);
         assertEquals(expectedScore, score);
     }
 }

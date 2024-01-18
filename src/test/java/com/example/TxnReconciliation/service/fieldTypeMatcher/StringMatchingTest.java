@@ -62,7 +62,7 @@ class StringMatchingTest {
         String value2 = "sity";
         when(stringMatchingUtil.getDistanceBetweenStrings(value1, value2)).thenReturn(3);
 
-        double score = stringMatching.similarityScore(value1, value2);
+        double score = stringMatching.getSimilarityScore(value1, value2);
         assertEquals(0.75, score);
     }
 }

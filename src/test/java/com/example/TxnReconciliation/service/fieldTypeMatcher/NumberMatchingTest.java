@@ -64,7 +64,7 @@ class NumberMatchingTest {
         String value1 = "100";
         String value2 = "85";
 
-        double score = numberMatching.similarityScore(value1, value2);
+        double score = numberMatching.getSimilarityScore(value1, value2);
         assertEquals(0.85, score, 0.000001); // Allow slight tolerance for floating-point comparison
     }
 }
