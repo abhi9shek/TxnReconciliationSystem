@@ -47,7 +47,6 @@ class CategorisationEngineServiceTest {
 
     @Test
     void processReconciliationResults_Success() {
-        // Arrange
         when(txnDAO.findAll()).thenReturn(Arrays.asList(
                 new Transaction("GSTIN1", "2022-01-01", "123", 10.0, 100.0, 5.0, 3.0, 2.0, 10.0, String.valueOf(TxnType.BUYER)),
                 new Transaction("GSTIN2", "2022-01-02", "456", 8.0, 80.0, 4.0, 2.0, 2.0, 8.0, String.valueOf(TxnType.SUPPLIER))
@@ -68,17 +67,14 @@ class CategorisationEngineServiceTest {
                 new TxnReconciliation(buyerTransactions.get(1), supplierTransactions.get(1),  MatchCategory.PARTIAL)
         ));
 
-        // Act
         categorisationEngineService.processReconciliationResults("/home/abhishek/TxnFiles/Buyer.csv", "/home/abhishek/TxnFiles/Supplier.csv", "/home/abhishek/TxnFiles/Res.csv");
 
-        // Assert
         verify(txnDAO, times(2)).saveAll(anyList());
         verify(txnReconciliationDAO).saveAll(anyList());
     }
 
     @Test
     void validationsOnTxns_SkipsExistingTransaction() {
-        // Arrange
         when(txnDAO.findAll()).thenReturn(Arrays.asList(
                 new Transaction("GSTIN1", "2022-01-01", "123", 10.0, 100.0, 5.0, 3.0, 2.0, 10.0, String.valueOf(TxnType.BUYER))
         ));
@@ -88,10 +84,8 @@ class CategorisationEngineServiceTest {
                 new Transaction("GSTIN2", "2022-01-02", "456", 8.0, 80.0, 4.0, 2.0, 2.0, 8.0, String.valueOf(TxnType.BUYER))
         );
 
-        // Act
         List<Transaction> result = categorisationEngineService.validationsOnTxns(transactions);
 
-        // Assert
         verify(txnDAO).findAll();
         assertEquals(1, result.size());
         assertEquals("GSTIN2", result.get(0).getGstIn());

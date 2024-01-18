@@ -71,7 +71,7 @@ class TransactionMatcherServiceTest {
     @Test
     void calculateMatchScore() {
         Transaction buyerTransaction = new Transaction("GSTIN1", "01-01-2022", "123", 10.0, 100.0, 5.0, 3.0, 2.0, 10.0, String.valueOf(TxnType.BUYER));
-        Transaction supplierTransaction = new Transaction("GST4", "03-01-2022", "456", 10.0, 105.0, 5.0, 4.0, 2.0, 12.0, String.valueOf(TxnType.SUPPLIER));
+        Transaction supplierTransaction = new Transaction("ABTIN1", "03-01-2022", "123", 10.0, 100.0, 5.0, 3.0, 2.0, 10.0, String.valueOf(TxnType.SUPPLIER));
         double expectedScore = 0.72;
 
         when(partialMatch.calculateSimilarityScore(buyerTransaction, supplierTransaction)).thenReturn(expectedScore);

@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TxnDAO extends JpaRepository<Transaction, Long> {
 
-    //implement custom methods
-
 }

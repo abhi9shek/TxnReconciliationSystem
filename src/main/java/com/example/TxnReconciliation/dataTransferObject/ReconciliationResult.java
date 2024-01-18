@@ -27,12 +27,4 @@ public class ReconciliationResult {
         return matchCategory;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder resultString = new StringBuilder();
-        resultString.append("Buyer Transaction: ").append(buyerTransaction).append(", ");
-        resultString.append("Supplier Transaction: ").append(supplierTransaction).append(", ");
-        resultString.append("Category: ").append(matchCategory);
-        return resultString.toString();
-    }
 }

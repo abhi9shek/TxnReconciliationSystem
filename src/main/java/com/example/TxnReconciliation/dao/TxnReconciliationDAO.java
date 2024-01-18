@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TxnReconciliationDAO extends JpaRepository<TxnReconciliation,Long> {
 
-    //implement custom methods
 }

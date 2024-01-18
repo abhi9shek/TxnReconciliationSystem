@@ -66,10 +66,9 @@ class ExactMatchingStrategyTest {
         fieldsMatcher.put(TxnFields.CGST, cgstMatcher);
         fieldsMatcher.put(TxnFields.SGST, sgstMatcher);
         fieldsMatcher.put(TxnFields.TOTAL, totalMatcher);
-        // ... Add other field matchers
 
         when(propertiesReader.getProperty("MATCHING_TXN_FIELDS", "gstIn,date,billNo")).thenReturn("gstIn,date,billNo"); // Set specific fields for tests
-        exactMatchingStrategy = new ExactMatchingStrategy(); // Inject dependencies
+        exactMatchingStrategy = new ExactMatchingStrategy();
     }
 
     @Test

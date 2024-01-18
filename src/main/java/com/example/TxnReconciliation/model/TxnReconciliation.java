@@ -36,17 +36,5 @@ public class TxnReconciliation {
         this.matchCategory = matchCategory;
     }
 
-    public Transaction getBuyerTransaction() {
-        return buyerTransaction;
-    }
-
-    public Transaction getSupplierTransaction() {
-        return supplierTransaction;
-    }
-
-    public MatchCategory getMatchCategory() {
-        return matchCategory;
-    }
-
 }
 

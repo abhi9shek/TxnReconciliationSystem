@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"com.example.TxnReconciliation.model"})
-@EnableJpaRepositories(basePackages = {"com.example.TxnReconciliation.dao"})
-@Import({TxnDAOBean.class, TxnReconciliationDAOBean.class})
+//@EntityScan(basePackages = {"com.example.TxnReconciliation.model"})
+//@EnableJpaRepositories(basePackages = {"com.example.TxnReconciliation.dao"})
+//@Import({TxnDAOBean.class, TxnReconciliationDAOBean.class})
 public class TxnReconciliationApplication {
     public static void main(String[] args) {
 
